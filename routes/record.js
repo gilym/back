@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
     password: '12345678'
 })
 
-app.get('/api/jamur', (req, res) => {
+router.get('/api/jamur', (req, res) => {
     const sqlQuery = "SELECT * FROM must";
     db.query(sqlQuery, (err, result) => {
   
@@ -30,7 +30,7 @@ app.get('/api/jamur', (req, res) => {
     });
   });
   
-  app.get('/api/readJamur/:id_mush', (req, res) => {
+  router.get('/api/readJamur/:id_mush', (req, res) => {
     const jamurId = req.params.id_mush;
   
     const sqlQuery = "SELECT * FROM must WHERE id_mush = ?";
@@ -46,7 +46,7 @@ app.get('/api/jamur', (req, res) => {
   // #####
   
   // create
-  app.post('/api/addJamur', (req, res) => {
+  router.post('/api/addJamur', (req, res) => {
     const idJamur = req.body.id_mush;
     const nameJamur = req.body.name;
     const latinName = req.body.latin_name;
@@ -67,7 +67,7 @@ app.get('/api/jamur', (req, res) => {
   // #####
   
   // update
-  app.put('/api/updateJamur/:id_mush', (req, res) => {
+  router.put('/api/updateJamur/:id_mush', (req, res) => {
     const idJamur = req.params.id_mush;
     const nameJamur = req.body.name;
     const latinName = req.body.latin_name;
@@ -88,7 +88,7 @@ app.get('/api/jamur', (req, res) => {
   // #####
   
   // delete
-  app.delete('/api/deleteJamur/:id_mush', (req, res) => {
+  router.delete('/api/deleteJamur/:id_mush', (req, res) => {
     const idJamur = req.params.id_mush;
   
     const sqlQuery = "DELETE FROM must WHERE id_mush = ?";
@@ -104,7 +104,7 @@ app.get('/api/jamur', (req, res) => {
   });
   
   // #####
-  app.get('/api/users', (req, res) => {
+  router.get('/api/users', (req, res) => {
     const sqlQuery = "SELECT * FROM user";
     db.query(sqlQuery, (err, result) => {
   
@@ -118,7 +118,7 @@ app.get('/api/jamur', (req, res) => {
   });
   
   // Get User By Id
-  app.get('/api/userById/:user_id', (req, res) => {
+  router.get('/api/userById/:user_id', (req, res) => {
     const userId = req.params.user_id;
   
     const sqlQuery = "SELECT * FROM user WHERE user_id = ?";
@@ -138,7 +138,7 @@ app.get('/api/jamur', (req, res) => {
   });
   
   // add User 
-  app.post('/api/addUsers', (req, res) => {
+  router.post('/api/addUsers', (req, res) => {
     const userId = req.body.user_id
     const userName = req.body.username;
     const userEmail = req.body.user_email;
@@ -157,7 +157,7 @@ app.get('/api/jamur', (req, res) => {
   });
   
   //cekUsername
-    app.post('/api/checkUsername', (req, res) => {
+    router.post('/api/checkUsername', (req, res) => {
       const userName = req.body.username;
       const sqlQuery = "SELECT * FROM user WHERE username = ?";
       db.query(sqlQuery, [userName], (err, result) => {
@@ -177,7 +177,7 @@ app.get('/api/jamur', (req, res) => {
     });
   
   // Update Users
-  app.put('/api/updateUser', (req, res) => {
+  router.put('/api/updateUser', (req, res) => {
     const userId = req.body.user_id;
     const userName = req.body.username;
     const userEmail = req.body.user_email;
@@ -195,7 +195,7 @@ app.get('/api/jamur', (req, res) => {
   });
   
   //delete Users
-  app.delete('/api/deleteUser/:user_id', (req, res) => {
+  router.delete('/api/deleteUser/:user_id', (req, res) => {
     const userId = req.params.user_id;
     
     const sqlQuery = "DELETE FROM user WHERE user_id = ?";
@@ -212,7 +212,7 @@ app.get('/api/jamur', (req, res) => {
   
   
   //login
-  app.post('/api/userLogin', (req, res) => {
+  router.post('/api/userLogin', (req, res) => {
     const userName = req.body.username;
     const userPassword = req.body.user_password;
   
