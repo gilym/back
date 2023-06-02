@@ -53,6 +53,8 @@ router.get('/api/jamur', (req, res) => {
     const Description = req.body.description;
     const Habit = req.body.habitat;
     const Pict = req.body.pict;
+
+    console.log(nameJamur);
   
     const sqlQuery = "INSERT INTO must (name, latin_name, description, habitat, pict) VALUE (?, ?, ?, ?, ?)";
     db.query(sqlQuery, [nameJamur, latinName, Description, Habit, Pict], (err, result) => {
